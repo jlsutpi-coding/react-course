@@ -63,59 +63,8 @@
         );
       }
       // <ChatInput/> is component syntax
+
       // the same with calling the function chatInput();
-
-      function ChatMessages({ chatMessages }) {
-        {
-          return (
-            <>
-              {chatMessages.map((chatMessage) => {
-                return (
-                  <ChatMessage
-                    key={chatMessage.id}
-                    message={chatMessage.message}
-                    sender={chatMessage.sender}
-                  />
-                );
-              })}
-            </>
-          );
-        }
-      }
-
-      function App() {
-        const [chatMessages, setChatMessages] = React.useState([
-          {
-            id: 1,
-            message: "hello chatbot",
-            sender: "user",
-          },
-          {
-            id: 2,
-            message: "Hello! How can I help you?",
-            sender: "robot",
-          },
-          {
-            id: 3,
-            message: "can you get me today date?",
-            sender: "user",
-          },
-          {
-            id: 4,
-            message: "Today is October 11",
-            sender: "robot",
-          },
-        ]);
-        return (
-          <div>
-            <ChatInput
-              chatMessages={chatMessages}
-              setChatMessages={setChatMessages}
-            />
-            <ChatMessages chatMessages={chatMessages} />
-          </div>
-        );
-      }
       /*
       const app = (
         <div>
