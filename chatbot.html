@@ -21,26 +21,31 @@
           </>
         );
       }
+      // destructuring
+      function ChatMessage({ message, sender }) {
+        // const { message, sender } = props;
 
-      function ChatMessage(props) {
-        const { message, sender } = props;
-        if (sender === "robot") {
-          return (
-            <div>
-              <img src="robot.png" alt="" width="50" />
-              {message}
-            </div>
-          );
-        }
         return (
           <div>
+            {sender === "robot" && <img src="robot.png" width="50" />}
             {message}
-            <img src="user.png" alt="" width="50" />
+            {sender === "user" && <img src="user.png" alt="" width="50" />}
           </div>
         );
       }
       // <ChatInput/> is component syntax
       // the same with calling the function chatInput();
+
+      function App() {
+        return (
+          <div>
+            <ChatInput />
+            <ChatMessage message="hello chatbot" sender="user" />
+            <ChatMessage message="Hello! How can I help you?" sender="robot" />
+          </div>
+        );
+      }
+      /*
       const app = (
         <div>
           <ChatInput />
@@ -48,10 +53,11 @@
           <ChatMessage message="Hello! How can I help you?" sender="robot" />
         </div>
       );
+      */
 
       const container = document.querySelector(".js-container");
       const root = ReactDOM.createRoot(container);
-      root.render(app);
+      root.render(<App />);
     </script>
     <script src="react-basic.js"></script>
   </body>

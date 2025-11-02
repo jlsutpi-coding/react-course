@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatbot</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      function ProductDetail({ name, price, discountPrice, imageUrl }) {
+        return (
+          <div>
+            <img src={imageUrl} alt={imageUrl} width="200" />
+            <p>{name}</p>
+            <p>{discountPrice ? <del>{price}</del> : <span>{price}</span>}</p>
+            {discountPrice && <p>Disconut price : ${discountPrice}</p>}
+            <button>Add to Cart</button>
+          </div>
+        );
+      }
+      function App() {
+        return (
+          <>
+            <ProductDetail
+              name="Cotton socks"
+              price="10.90"
+              discountPrice="5.45"
+              imageUrl="./cotton-socks.png"
+            />
+            <ProductDetail
+              name="Tennis balls"
+              price="6.00"
+              imageUrl="./tennis-balls.png"
+            />
+            <ProductDetail
+              name="Plain T-shirt"
+              price="7.99"
+              imageUrl="./plain-t-shirt.png"
+            />
+          </>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      const root = ReactDOM.createRoot(container);
+      root.render(<App />);
+    </script>
+    <script src="react-basic.js"></script>
+  </body>
+</html>
