@@ -11,10 +11,20 @@
 
     <script src="https://unpkg.com/supersimpledev/babel.js"></script>
     <script type="text/babel">
-      const container = document.querySelector(".js-container");
-      ReactDOM.createRoot(container).render(
-        "Welcome to SuperSimpleDev React Course"
+      const div = (
+        <div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quaerat
+            commodi tempore, libero soluta animi ipsa quisquam esse provident
+            nostrum cupiditate omnis accusamus ad, pariatur maiores rem
+            dignissimos autem modi recusandae!
+          </p>
+          <button>hello</button>
+        </div>
       );
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(div);
     </script>
+    <script src="react-basic.js"></script>
   </body>
 </html>
