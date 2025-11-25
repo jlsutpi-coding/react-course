@@ -1,17 +1,23 @@
 import axiox from "axios";
 import Header from "../components/Header";
 import "./HomePage.css";
-import { products } from "../../ecommerce-project/data/products";
+import { useEffect, useState } from "react";
 
 function HomePage() {
-  axiox.get("http://localhost:3000/api/products").then((response) => {
-    console.log(response.data);
-  });
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  useEffect(() => {
+    axiox.get("api/products").then((response) => {
+      setProducts(response.data);
+    });
+
+    axiox.get("api/cart-items").then((response) => setCart(response.data));
+  }, []);
   return (
     <>
       <link rel="icon" type="image/svg+xml" href="favicon/home-favicon.png" />
       <title>Ecommerce Project</title>
-      <Header />
+      <Header cart={cart} />
       <div className="home-page">
         <div className="products-grid">
           {products.map((product) => {
