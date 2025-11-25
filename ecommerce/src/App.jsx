@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
 import HomePage from "./pages/HomePage";
-import CheckoutPage from "./pages/CheckoutPage";
 import OrdersPage from "./pages/OrdersPage";
+import CheckoutPage from "./pages/checkout/CheckoutPage";
 
 function App() {
   return (
