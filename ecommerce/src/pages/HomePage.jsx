@@ -1,8 +1,12 @@
+import axiox from "axios";
 import Header from "../components/Header";
 import "./HomePage.css";
 import { products } from "../../ecommerce-project/data/products";
 
 function HomePage() {
+  axiox.get("http://localhost:3000/api/products").then((response) => {
+    console.log(response.data);
+  });
   return (
     <>
       <link rel="icon" type="image/svg+xml" href="favicon/home-favicon.png" />
