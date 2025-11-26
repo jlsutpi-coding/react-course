@@ -10,13 +10,15 @@ function CheckoutPage({ cart }) {
   const [deliveryOptions, setDeliveryOptions] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/api/delivery-options?expand=estimatedDeliveryTime")
-      .then((response) => setDeliveryOptions(response.data));
-
-    axios
-      .get("/api/payment-summary")
-      .then((response) => setPaymentSummary(response.data));
+    const fetchCheckoutPageData = async () => {
+      const responseDeliveryOptions = await axios.get(
+        "/api/delivery-options?expand=estimatedDeliveryTime"
+      );
+      setDeliveryOptions(responseDeliveryOptions.data);
+      const responsePaySummary = await axios.get("/api/payment-summary");
+      setPaymentSummary(responsePaySummary.data);
+    };
+    fetchCheckoutPageData();
   }, []);
 
   return (
