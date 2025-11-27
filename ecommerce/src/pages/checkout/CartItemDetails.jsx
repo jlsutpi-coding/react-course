@@ -1,6 +1,6 @@
 import { formatMoney } from "../../utils/money";
 
-function CartItemDetail({ cartItem }) {
+export function CartItemDetail({ cartItem }) {
   return (
     <>
       <img className="product-image" src={cartItem.product.image} />
@@ -22,5 +22,3 @@ function CartItemDetail({ cartItem }) {
     </>
   );
 }
-
-export default CartItemDetail;

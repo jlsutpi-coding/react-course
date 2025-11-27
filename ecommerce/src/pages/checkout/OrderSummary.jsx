@@ -1,5 +1,5 @@
 import { DeliveryOptions } from "./DeliveryOptions";
-import CartItemDetail from "./CartItemDetails";
+import { CartItemDetail } from "./CartItemDetails";
 import { DeliveryDate } from "./DeliveryDate";
 
 export function OrderSummary({ deliveryOptions, cart }) {
