@@ -79,3 +79,8 @@
   border-radius: 50px;
   width: 50%;
 }
+.tracking-products {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}

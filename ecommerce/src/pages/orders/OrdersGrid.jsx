@@ -13,7 +13,7 @@ export const OrdersGrid = ({ order }) => {
             </div>
 
             <div className="product-details">
-              <div className="product-name">{product.product?.name}</div>
+              <div className="product-name">{product.product.name}</div>
               <div className="product-delivery-date">
                 Arriving on:{" "}
                 {dayjs(product.estimatedDeliveryTimeMs).format("MMMM D")}
@@ -31,7 +31,7 @@ export const OrdersGrid = ({ order }) => {
             </div>
 
             <div className="product-actions">
-              <Link to="/tracking">
+              <Link to={`/tracking/${order.id}/${product.product.id}`}>
                 <button className="track-package-button button-secondary">
                   Track package
                 </button>
