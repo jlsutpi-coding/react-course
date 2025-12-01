@@ -15,10 +15,16 @@ function CheckoutPage({ cart, loadCart }) {
         "/api/delivery-options?expand=estimatedDeliveryTime"
       );
       setDeliveryOptions(responseDeliveryOptions.data);
+    };
+    fetchCheckoutPageData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
       const responsePaySummary = await axios.get("/api/payment-summary");
       setPaymentSummary(responsePaySummary.data);
     };
-    fetchCheckoutPageData();
+    fetchData();
   }, [cart]);
 
   return (
