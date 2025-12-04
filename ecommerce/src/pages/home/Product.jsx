@@ -25,7 +25,11 @@ export const Product = ({ product, loadCart }) => {
   return (
     <div className="product-container">
       <div className="product-image-container">
-        <img className="product-image" src={product.image} />
+        <img
+          data-testid="product-image"
+          className="product-image"
+          src={product.image}
+        />
       </div>
 
       <div className="product-name limit-text-to-2-lines">{product.name}</div>
@@ -34,6 +38,7 @@ export const Product = ({ product, loadCart }) => {
         <img
           className="product-rating-stars"
           src={`images/ratings/rating-${product.rating.stars * 10}.png`}
+          data-testid="rating-image"
         />
         <div className="product-rating-count link-primary">
           {product.rating.count}
@@ -72,6 +77,7 @@ export const Product = ({ product, loadCart }) => {
             setAdded(true);
           }, 2000);
         }}
+        data-testid="add-to-cart-button"
       >
         Add to Cart
       </button>
