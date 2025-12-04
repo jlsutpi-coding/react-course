@@ -1,4 +1,4 @@
-import { expect, it, describe, vi } from "vitest";
+import { expect, it, describe, vi, beforeEach } from "vitest";
 // import { formatMoney } from "./money";
 import { Product } from "./Product";
 import { render, screen } from "@testing-library/react";
@@ -8,8 +8,13 @@ import userEvent from "@testing-library/user-event";
 vi.mock("axios");
 
 describe("Product component", () => {
-  it("displays the product details correctly", () => {
-    const product = {
+  // recreate the prodcut and loadcart before each test
+  // beforeEach is a test hook
+  let product;
+  let loadCart;
+
+  beforeEach(() => {
+    product = {
       keywords: ["cooking set", "kitchen"],
       id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
       image: "images/products/non-stick-cooking-set-4-pieces.jpg",
@@ -22,9 +27,12 @@ describe("Product component", () => {
       createdAt: "2025-12-01T17:03:44.750Z",
       updatedAt: "2025-12-01T17:03:44.750Z",
     };
+    loadCart = vi.fn();
+  });
 
-    const loadCart = vi.fn();
+  it("displays the product details correctly", () => {
     render(<Product product={product} loadCart={loadCart} />);
+
     expect(
       screen.getByText("Non-Stick Cook Set With Lids - 4 Pieces")
     ).toBeInTheDocument();
@@ -42,22 +50,8 @@ describe("Product component", () => {
   });
 
   it("adds a product to the cart", async () => {
-    const product = {
-      keywords: ["cooking set", "kitchen"],
-      id: "4e37dd03-3b23-4bc6-9ff8-44e112a92c64",
-      image: "images/products/non-stick-cooking-set-4-pieces.jpg",
-      name: "Non-Stick Cook Set With Lids - 4 Pieces",
-      rating: {
-        stars: 4.5,
-        count: 511,
-      },
-      priceCents: 6797,
-      createdAt: "2025-12-01T17:03:44.750Z",
-      updatedAt: "2025-12-01T17:03:44.750Z",
-    };
-
-    const loadCart = vi.fn();
     render(<Product product={product} loadCart={loadCart} />);
+
     const user = userEvent.setup();
     const addToCartButton = screen.getByTestId("add-to-cart-button");
     await user.click(addToCartButton);
